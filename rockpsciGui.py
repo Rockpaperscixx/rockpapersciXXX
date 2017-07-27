@@ -1,0 +1,28 @@
+from tkinter import *
+class game:
+    def __init__(self, master):
+        frame1=Frame(master,width="500",height="500", bg="green")
+        frame1.pack()
+        var= StringVar()
+        frame1.pack_propagate(0)
+        frame2=Frame(frame1, bg="Black")
+        frame2.pack(side="bottom",fill=X)
+        self.label2=Label(frame2, height="2", textvariable= var, fg="white", bg="Black")
+        self.label2.pack()
+        var.set("asdhgahusdghjags")
+        self.label1=Label(frame1, text="Choose your weapon against computer, choose well!!:- ", fg="yellow",bg="green")
+        self.label1.pack(side="top")
+        self.Rock=Button(frame1,text="ROCK",fg="RED", width="5", height="2")
+        self.Paper=Button(frame1,text="Paper",fg="RED", width="5", height="2")
+        self.Scissor=Button(frame1,text="Scissor",fg="RED", width="5", height="2")
+        self.Rock.pack(side="left")
+        self.Paper.pack(side="right")
+        self.Scissor.pack(side="top")
+        self.Rock.bind("<Button-1>", self.donothing(var,"<Button-1>"))
+        self.Paper.bind("<Button-1>", self.donothing(var,"<Button-1>"))
+        self.Scissor.bind("<Button-1>", self.donothing(var,"<Button-1>"))                
+    def donothing(self, var1, event):
+        var1.set("this is a test")
+root=Tk()
+Game=game(root)
+root.mainloop()
