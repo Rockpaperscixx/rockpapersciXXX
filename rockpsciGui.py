@@ -8,12 +8,12 @@ def donothing2(event):
     donothing_2(event)
 def donothing3(event):
     donothing_3(event)
-frame1=Frame(root,width="500",height="500", bg="green")
+frame1=Frame(root,width="300",height="300", bg="green")
 frame1.pack()
 frame1.pack_propagate(0)
 frame2=Frame(frame1, bg="Black")
 frame2.pack(side="bottom",fill=X)
-label2=Label(frame2, height="2", textvariable= var, fg="white", bg="Black")
+label2=Label(frame2, height="3", textvariable= var, fg="white", bg="Black")
 label2.pack()
 var.set("asdhgahusdghjags")
 label1=Label(frame1, text="Choose your weapon against computer, choose well!!:- ", fg="yellow",bg="green")
@@ -44,39 +44,34 @@ def getresult(choice):
     comp_points =0
     msg=""
     weapon_of_choice={1:'Rock',2: 'Paper', 3: 'Scissor'}
-    while (human_points <5 and comp_points <5):        
+    if (human_points <5 and comp_points <5):        
         humanchoice=weapon_of_choice.get(int(choice),"never")
         compchoice= weapon_of_choice.get(random.randint(1,3),"never")
         if(humanchoice=='Rock' and compchoice=='Paper'):
             comp_points+=1
             msg="Point by computer"
-            var.set("Human:- "+ humanchoice +"+ computer:-"+ compchoice+" "+msg+" "+str(human_points)+str(comp_points))
         elif(humanchoice=='Paper'and compchoice=='Scissor'):
             comp_points+=1
             msg="Point by computer"
-            var.set("Human:- "+ humanchoice +"+ computer:-"+ compchoice+" "+msg+" "+str(human_points)+str(comp_points))
         elif(humanchoice=='Scissor' and compchoice=='Rock'):
             comp_points+=1
             msg="Point by computer"
-            var.set("Human:- "+ humanchoice +"+ computer:-"+ compchoice+" "+msg+" "+str(human_points)+str(comp_points))
         elif(humanchoice=='Rock'and compchoice=='Scissor'):
             human_points+=1
             msg="Point by Human"
-            var.set("Human:- "+ humanchoice +"+ computer:-"+ compchoice+" "+msg+" "+str(human_points)+str(comp_points))
         elif(humanchoice=='Paper'and compchoice=='Rock'):
             human_points+=1
             msg="Point by Human"
-            var.set("Human:- "+ humanchoice +"+ computer:-"+ compchoice+" "+msg+" "+str(human_points)+str(comp_points))
         elif(humanchoice=='Scissor' and compchoice=='Paper'):
             human_points+=1
             msg="Point by Human"
-            var.set("Human:- "+ humanchoice +"+ computer:-"+ compchoice+" "+msg+" "+str(human_points)+str(comp_points))
         else:
             msg="It is the same"
-            var.set("Human:- "+ humanchoice +"+ computer:-"+ compchoice+" "+msg+" "+str(human_points)+str(comp_points))
-    if(human_points==5):
-        var.set("Human WON !!")
+    if(human_points==1):
+        var.set("Human WON !!\n   "+msg+"\n  "+humanchoice+"+"+compchoice+"  "+str(human_points)+" "+ str(comp_points))
+    elif(human_points==0 and comp_points==0):
+        var.set("Draw !!\n   "+msg+"\n  "+humanchoice+"+"+compchoice+"  "+str(human_points)+" "+ str(comp_points))
     else:
-        var.set("Human LOST !!")
+        var.set("Human LOST !!\n   "+msg+"\n  "+humanchoice+"+"+compchoice+"  "+str(human_points)+" "+ str(comp_points))
 root.mainloop()
 
